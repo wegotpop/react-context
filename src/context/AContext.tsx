@@ -4,7 +4,7 @@ import { useHasReRendered } from "../hooks/useHasReRendered.ts";
 interface AContext {
   aFunc: () => void;
   aState: boolean;
-  staticString: "string";
+  staticString: "some static text";
 }
 
 const AContext = React.createContext({} as AContext);
@@ -23,7 +23,7 @@ export function AProvider({ children, initialState }: ProviderProps) {
     setInternalState((prevState) => !prevState);
   }
 
-  const staticString = "string";
+  const staticString = "some static text";
 
   return (
     <AContext.Provider

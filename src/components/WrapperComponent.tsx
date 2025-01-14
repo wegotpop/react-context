@@ -1,4 +1,5 @@
 import { useHasReRendered } from "../hooks/useHasReRendered.ts";
+import { useRandomColour } from "../hooks/useRandomColour.ts";
 
 export function WrapperComponent({
   id,
@@ -7,10 +8,12 @@ export function WrapperComponent({
   id: string;
   children: React.ReactNode;
 }) {
+  const { colour } = useRandomColour();
+
   useHasReRendered(id);
   return (
-    <div className="wrapper">
-      <div>Wrapper component {id}</div>
+    <div className="wrapper" style={{ borderColor: colour }}>
+      <div>{id}</div>
       {children}
     </div>
   );

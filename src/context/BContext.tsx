@@ -1,28 +1,23 @@
 import React from "react";
 
 interface BContext {
-    aFunc: () => void;
-    aState: boolean;
+  staticString: "some static text";
 }
 
 const BContext = React.createContext({} as BContext);
 
 interface ProviderProps {
-    children: React.ReactNode;
-    initialState: boolean
+  children: React.ReactNode;
 }
 
-export function BProvider({ children, initialState }: ProviderProps) {
-
-    const [internalState, setInternalState] = React.useState(initialState);
-
-    function updateState() {
-        setInternalState((prevState) => !prevState)
-    }
-
-    return <BContext.Provider value={{aFunc: updateState, aState: internalState}}>{children}</BContext.Provider>;
+export function BProvider({ children }: ProviderProps) {
+  return (
+    <BContext.Provider value={{ staticString: "some static text" }}>
+      {children}
+    </BContext.Provider>
+  );
 }
 
 export function useBContext() {
-    return React.useContext(BContext);
+  return React.useContext(BContext);
 }

@@ -11,10 +11,15 @@ import { NestedConsumerWithoutChangingValue } from "./components/NestedConsumerW
 function Wrapped() {
   return (
     <WrapperComponent id={"outer-wrapper"}>
+      <h3>Using Context Provider</h3>
       <NestedComponent id={"nested-1"} />
       <NestedConsumer id={"consumer-1"} />
       <NestedConsumerWithoutChangingValue id={"consumer-static-1"} />
-      <NestedConsumerWithUpdate id={"consumer-2"} />
+      <WrapperComponent id={"inner-wrapper"}>
+        <WrapperComponent id={"inner-inner-wrapper"}>
+          <NestedConsumerWithUpdate id={"consumer-2"} />
+        </WrapperComponent>
+      </WrapperComponent>
     </WrapperComponent>
   );
 }
@@ -26,6 +31,7 @@ function WrappedWithProps() {
   }
   return (
     <WrapperComponent id={"outer-wrapper-passing-props"}>
+      <h3>Using "Prop Drilling"</h3>
       <NestedComponent id={"nested-1-no-props"} />
       <NestedComponentWithProps
         id={"nested-3-with-props"}

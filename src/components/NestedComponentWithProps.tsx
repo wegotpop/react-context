@@ -1,4 +1,5 @@
 import { useHasReRendered } from "../hooks/useHasReRendered.ts";
+import { useRandomColour } from "../hooks/useRandomColour.ts";
 
 export function NestedComponentWithProps({
   id,
@@ -7,10 +8,13 @@ export function NestedComponentWithProps({
   id: string;
   prop: number;
 }) {
+  const { colour } = useRandomColour();
+
   useHasReRendered(id);
+
   return (
-    <div className="component">
-      <div>Nested component {id}</div>
+    <div className="component" style={{ borderColor: colour }}>
+      <div>{id}</div>
       <div>Prop: {prop}</div>
     </div>
   );

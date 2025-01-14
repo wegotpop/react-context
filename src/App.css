@@ -53,6 +53,11 @@
   margin-top: 1rem;
 }
 
+.wrapper:first-child,
+.wrapper:first-child + .wrapper {
+  min-width: 30rem;
+}
+
 .side-by-side {
   display: flex;
   gap: 2rem;
